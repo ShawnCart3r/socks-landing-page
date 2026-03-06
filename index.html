@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Socks | Fleet Feet Vermont</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+ :root {
+      --navy: #0D1B3E;
+      --navy-deep: #071020;
+      --navy-mid: #142348;
+      --navy-light: #1e3160;
+      --accent: #4A9EFF;
+      --accent-glow: rgba(74,158,255,0.18);
+      --white: #ffffff;
+      --muted: #7a9cc4;
+      --card-bg: #111f42;
+      --card-border: rgba(74,158,255,0.15);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--navy-deep);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(74,158,255,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 90% 90%, rgba(13,27,62,0.8) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 40px;
+      border-bottom: 1px solid rgba(74,158,255,0.12);
+      background: rgba(7,16,32,0.7);
+      backdrop-filter: blur(10px);
+    }
+    header img {
+      height: 72px;
+      width: auto;
+      mix-blend-mode: lighten;
+      filter: brightness(1.05);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 72px 24px 56px;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid rgba(74,158,255,0.25);
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(52px, 8vw, 96px);
+      font-weight: 900;
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ── BRAND GRID ── */
+    .grid-section {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 100px;
+    }
+    .brand-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    /* ── BRAND CARD ── */
+    .brand-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .brand-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 40px rgba(74,158,255,0.18), 0 20px 60px rgba(0,0,0,0.5);
+      border-color: rgba(74,158,255,0.4);
+    }
+    .brand-card:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+    .brand-img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 90px;
+      background: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+    .brand-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 32px;
+      transition: transform 0.4s ease;
+    }
+    .brand-card:hover .brand-img img { transform: scale(1.05); }
+    .brand-info {
+      padding: 18px 20px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand-name-small {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .brand-tagline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .brand-arrow {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent-glow);
+      border: 1px solid rgba(74,158,255,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 16px;
+      flex-shrink: 0;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+    }
+    .brand-card:hover .brand-arrow {
+      background: var(--accent);
+      color: var(--navy-deep);
+      transform: translateX(3px);
+    }
+    .style-count-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: var(--navy-deep);
+      border: 1px solid rgba(74,158,255,0.5);
+      color: var(--accent);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    /* ── MODAL OVERLAY ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(5,12,28,0.9);
+      backdrop-filter: blur(10px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.open {
+      display: flex;
+      animation: fadeIn 0.2s ease;
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* ── MODAL BOX ── */
+    .modal-box {
+      background: var(--navy-mid);
+      border: 1px solid rgba(74,158,255,0.2);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 860px;
+      max-height: 88vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      animation: slideUp 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      position: relative;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(24px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(255,255,255,0.08);
+      border: none;
+      color: var(--white);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 10;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.18); }
+
+    /* Modal header */
+    .modal-header {
+      padding: 32px 36px 24px;
+      border-bottom: 1px solid rgba(74,158,255,0.12);
+    }
+    .modal-brand-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .modal-brand-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 36px;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .modal-brand-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 540px;
+    }
+
+    /* Mini style cards grid inside modal */
+    .styles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+      padding: 28px 36px 36px;
+    }
+
+    /* ── MINI STYLE CARD ── */
+    .style-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(74,158,255,0.12);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .style-card:hover {
+      border-color: rgba(74,158,255,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px rgba(74,158,255,0.1);
+    }
+    .style-card-img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 52px;
+      background: #ffffff;
+      overflow: hidden;
+    }
+    .style-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 16px;
+    }
+    .style-card-body {
+      padding: 12px 14px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+    .style-card-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .style-card-price {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .style-divider {
+      height: 1px;
+      background: rgba(74,158,255,0.1);
+      margin: 2px 0;
+    }
+    .style-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .style-stat { display: flex; flex-direction: column; gap: 1px; }
+    .style-stat-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .style-stat-value {
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.3;
+    }
+    .style-cushion-row {
+      display: flex;
+      gap: 3px;
+      margin-top: 3px;
+    }
+    .s-pip {
+      height: 5px;
+      flex: 1;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.08);
+    }
+    .s-pip.on { background: var(--accent); }
+    .style-cta-row { margin-top: auto; padding-top: 10px; }
+    .style-cta {
+      display: block;
+      text-align: center;
+      background: rgba(74,158,255,0.1);
+      border: 1px solid rgba(74,158,255,0.25);
+      color: var(--accent);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 9px 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .style-card:hover .style-cta {
+      background: var(--accent);
+      color: var(--navy-deep);
+      border-color: var(--accent);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 28px 24px;
+      border-top: 1px solid rgba(74,158,255,0.1);
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .brand-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .styles-grid { grid-template-columns: 1fr 1fr; padding: 20px; gap: 12px; }
+      .modal-header { padding: 28px 20px 20px; }
+      .modal-brand-title { font-size: 26px; }
+    }
+    @media (max-width: 400px) {
+      .brand-grid { grid-template-columns: 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <img src="image/FF VT Logo (1).jpg" class="logo" alt="Fleet Feet Vermont" />
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-eyebrow">Free With Every Regular Price Purchase</div>
+    <h1>Choose Your<br/><span>Free Socks</span></h1>
+    <p>Explore a brand, then pick the style that fits your run. One free pair included with every qualifying shoe, clothing, or bra purchase.</p>
+  </section>
+
+  <!-- Brand Grid -->
+  <section class="grid-section">
+    <div class="brand-grid" id="brandGrid"></div>
+  </section>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      <div class="modal-header">
+        <div class="modal-brand-label" id="modalLabel"></div>
+        <div class="modal-brand-title" id="modalTitle"></div>
+        <div class="modal-brand-desc" id="modalDesc"></div>
+      </div>
+      <div class="styles-grid" id="stylesGrid"></div>
+    </div>
+  </div>
+
+  <footer>
+    &'copy; 2026 Fleet Feet Vermont &nbsp;·&nbsp; Offer valid on regular price items only &nbsp;·&nbsp; While supplies last
+  </footer>
+
+<script>
+  // ─────────────────────────────────────────────────────────────────
+  // DATA — swap in your real images, names, prices & URLs
+  // ─────────────────────────────────────────────────────────────────
+  const brands = [
+    {
+      brand: "Darn Tough",
+      emoji: "🧦",
+      imgSrc: "image/darn-tough.jpg",           // brand card hero image URL
+      tagline: "",
+      desc: "Anatomically correct fit with targeted compression zones. Built for serious runners.",
+      styles: [
+        { name: "No Show Tab Ultra-LightWeight",   emoji: "🧦", imgSrc: "image/darntough-socks/ultra-light-no-show.webp", price: "$22.99", cushion: 5, material: "87% Nylon, 13% Elastane",         bestFor: "Long runs & trail",    url: "#" },
+        { name: "1/4 sock Ultra-Lightweight with Cushion",    emoji: "🧦", imgSrc: "image/darntough-socks/no-show-tab-ultra-with-cushion.webp", price: "$18.99", cushion: 3, material: "87% Nylon, 13% Elastane",         bestFor: "Everyday training",    url: "#" },
+        { name: "Crew Lightweight",    emoji: "🧦", imgSrc: "image/darntough-socks/micro-crew-light-ultra.webp", price: "$18.99", cushion: 3, material: "87% Nylon, 13% Elastane",         bestFor: "Everyday training",    url: "#" },
+        { name: "Crew Lightweight with Cushion",    emoji: "🧦", imgSrc: "image/darntough-socks/bolt-micro-crew-ultra-lightweight-cushion.webp", price: "$18.99", cushion: 3, material: "87% Nylon, 13% Elastane",         bestFor: "Everyday training",    url: "#" },
+        { name: "Boot Sock Midweight with Cushion",    emoji: "🧦", imgSrc: "image/darntough-socks/", price: "$18.99", cushion: 3, material: "87% Nylon, 13% Elastane",         bestFor: "Everyday training",    url: "#" },
+        { name: "Micro Crew Midweight with Cushion",    emoji: "🧦", imgSrc: "image/darntough-socks/", price: "$18.99", cushion: 3, material: "87% Nylon, 13% Elastane",         bestFor: "Everyday training",    url: "#" },
+    ]
+    },
+    {
+      brand: " Wide OPEN",
+      emoji: "🧦",
+      imgSrc: "",
+      tagline: "",
+      desc: "South African-made with mohair fiber for unbeatable blister protection and all-day comfort.",
+      styles: [
+        { name: "",   emoji: "🧦", imgSrc: "", price: "$17.99", cushion: 3, material: "60% Mohair, 35% Nylon, 5% Elastane",  bestFor: "Road running",          url: "#" },
+        { name: "",  emoji: "🧦", imgSrc: "", price: "$15.99", cushion: 4, material: "60% Mohair, 35% Nylon, 5% Elastane",  bestFor: "Daily wear & walking",  url: "#" },
+        { name: "",  emoji: "🧦", imgSrc: "", price: "$16.99", cushion: 3, material: "60% Mohair, 35% Nylon, 5% Elastane",  bestFor: "Long distance & hiking",url: "#" }
+      ]
+    },
+    {
+      brand: "Balega",
+      emoji: "🧦",
+      imgSrc: "image/1-balega-logo-1.jpg",
+      tagline: "",
+      desc: "Made right here in Vermont with Merino wool. Guaranteed for life — seriously.",
+      styles: [
+        { name: "Hidden Comfort", emoji: "🧦", imgSrc: "image/balega/hidden-comfort.webp", price: "$19.99", cushion: 1, material: "65% Merino Wool, 33% Nylon, 2% Lycra", bestFor: "Racing & speed",   url: "#" },
+        { name: "Enduro 1/4",      emoji: "🧦", imgSrc: "image/balega/enduro-1-4.webp", price: "$21.99", cushion: 2, material: "65% Merino Wool, 33% Nylon, 2% Lycra", bestFor: "Road running",     url: "#" },
+        { name: "Enduro Crew",       emoji: "🧦", imgSrc: "image/balega/enduro-crew.webp", price: "$23.99", cushion: 4, material: "60% Merino Wool, 38% Nylon, 2% Lycra", bestFor: "Hiking & outdoor", url: "#" },
+        { name: "Sliver Crew",       emoji: "🧦", imgSrc: "image/balega/silver-crew.webp", price: "$23.99", cushion: 4, material: "60% Merino Wool, 38% Nylon, 2% Lycra", bestFor: "Hiking & outdoor", url: "#" },      
+    ]
+    },
+    {
+      brand: "Jocology",
+      emoji: "🧦",
+      imgSrc: "image/jogology-logo.webp",
+      tagline: "",
+      desc: "Clinically tested padding that reduces pressure, impact, and friction on your feet.",
+      styles: [
+        { name: "Jogology Low Cushion No Show",       emoji: "🧦", imgSrc: "image/jogology/jogology-low.webp", price: "$14.99", cushion: 4, material: "70% THORLON, 28% Nylon, 2% Elastic", bestFor: "Walking & everyday",  url: "#" },
+        { name: "Jogology Medium Cushion No Show",   emoji: "🧦", imgSrc: "image/jogology/jogolofy-medium.webp", price: "$16.99", cushion: 3, material: "70% THORLON, 28% Nylon, 2% Elastic", bestFor: "Road running",        url: "#" },
+        { name: "Jogology High Cushion No Show",       emoji: "🧦", imgSrc: "image/jogology/jogology-high-cushion-no-show.webp", price: "$14.99", cushion: 4, material: "70% THORLON, 28% Nylon, 2% Elastic", bestFor: "Walking & everyday",  url: "#" },
+        { name: "Jogology Medium Cushion Quarter",   emoji: "🧦", imgSrc: "image/jogology/medium-cushion-quarter.webp", price: "$16.99", cushion: 3, material: "70% THORLON, 28% Nylon, 2% Elastic", bestFor: "Road running",        url: "#" },
+        
+      ]
+    }
+  ];
+
+  // ─────────────────────────────────────────────────────────────────
+  // Helpers
+  // ─────────────────────────────────────────────────────────────────
+  const cushionLabels = ['', 'Ultralight', 'Light', 'Medium', 'Max', 'Plush Max'];
+
+  function miniPips(level) {
+    let html = '<div class="style-cushion-row">';
+    for (let i = 1; i <= 5; i++) html += `<div class="s-pip${i <= level ? ' on' : ''}"></div>`;
+    return html + '</div>';
+  }
+
+  // ─────────────────────────────────────────────────────────────────
+  // Render brand cards
+  // ─────────────────────────────────────────────────────────────────
+  const brandGrid = document.getElementById('brandGrid');
+
+  brands.forEach((b, i) => {
+    const imgEl = b.imgSrc ? `<img src="${b.imgSrc}" alt="${b.brand}" />` : b.emoji;
+    const div = document.createElement('div');
+    div.className = 'brand-card';
+    div.dataset.index = i;
+    div.tabIndex = 0;
+    div.role = 'button';
+    div.setAttribute('aria-label', `Browse ${b.brand} styles`);
+    div.innerHTML = `
+      <div class="brand-img">
+        ${imgEl}
+        <div class="style-count-badge">${b.styles.length} Styles</div>
+      </div>
+      <div class="brand-info">
+        <div>
+          <div class="brand-name-small">${b.brand}</div>
+          <div class="brand-tagline">${b.tagline}</div>
+        </div>
+        <div class="brand-arrow">→</div>
+      </div>`;
+    brandGrid.appendChild(div);
+  });
+
+  // ─────────────────────────────────────────────────────────────────
+  // Modal logic
+  // ─────────────────────────────────────────────────────────────────
+  const overlay  = document.getElementById('modalOverlay');
+  const closeBtn = document.getElementById('modalClose');
+
+  function openModal(idx) {
+    const b = brands[idx];
+    document.getElementById('modalLabel').textContent = b.brand;
+    document.getElementById('modalTitle').textContent = b.tagline + ' Collection';
+    document.getElementById('modalDesc').textContent  = b.desc;
+
+    const stylesGrid = document.getElementById('stylesGrid');
+    stylesGrid.innerHTML = '';
+
+    b.styles.forEach(s => {
+      const imgEl = s.imgSrc ? `<img src="${s.imgSrc}" alt="${s.name}" />` : s.emoji;
+      const a = document.createElement('a');
+      a.href = s.url;
+      a.className = 'style-card';
+      a.innerHTML = `
+        <div class="style-card-img">${imgEl}</div>
+        <div class="style-card-body">
+          <div class="style-card-name">${s.name}</div>
+          <div class="style-card-price">${s.price}</div>
+          <div class="style-divider"></div>
+          <div class="style-stats">
+            <div class="style-stat">
+              <div class="style-stat-label">Cushion</div>
+              <div class="style-stat-value">${cushionLabels[s.cushion]}</div>
+              ${miniPips(s.cushion)}
+            </div>
+            <div class="style-stat">
+              <div class="style-stat-label">Best For</div>
+              <div class="style-stat-value">${s.bestFor}</div>
+            </div>
+            <div class="style-stat">
+              <div class="style-stat-label">Material</div>
+              <div class="style-stat-value">${s.material}</div>
+            </div>
+          </div>
+          <div class="style-cta-row">
+            <span class="style-cta">View Style →</span>
+          </div>
+        </div>`;
+      stylesGrid.appendChild(a);
+    });
+
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  brandGrid.addEventListener('click', e => {
+    const card = e.target.closest('.brand-card');
+    if (card) openModal(parseInt(card.dataset.index));
+  });
+  brandGrid.addEventListener('keydown', e => {
+    const card = e.target.closest('.brand-card');
+    if (card && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openModal(parseInt(card.dataset.index)); }
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
