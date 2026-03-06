@@ -63,7 +63,6 @@
       z-index: 1;
       text-align: center;
       padding: 72px 24px 56px;
-      
     }
     .hero-eyebrow {
       display: inline-block;
@@ -73,8 +72,6 @@
       letter-spacing: 5px;
       text-transform: uppercase;
       color: var(--accent);
-     
-      
       margin-bottom: 24px;
     }
     .hero h1 {
@@ -88,14 +85,6 @@
       margin-bottom: 20px;
     }
     .hero h1 span { color: var(--accent); }
-    .hero p {
-      font-size: 18px;
-      font-weight: 300;
-      color: var(--muted);
-      max-width: 480px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
 
     /* ── BRAND GRID ── */
     .grid-section {
@@ -188,20 +177,6 @@
       color: var(--navy-deep);
       transform: translateX(3px);
     }
-    .style-count-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: var(--navy-deep);
-      border: 1px solid rgba(74,158,255,0.5);
-      color: var(--accent);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      padding: 4px 10px;
-      border-radius: 100px;
-    }
 
     /* ── MODAL OVERLAY ── */
     .modal-overlay {
@@ -291,7 +266,7 @@
     /* Mini style cards grid inside modal */
     .styles-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       padding: 28px 36px 36px;
     }
@@ -344,48 +319,6 @@
       color: var(--white);
       line-height: 1.2;
     }
-    .style-card-price {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--accent);
-    }
-    .style-divider {
-      height: 1px;
-      background: rgba(74,158,255,0.1);
-      margin: 2px 0;
-    }
-    .style-stats {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-    .style-stat { display: flex; flex-direction: column; gap: 1px; }
-    .style-stat-label {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .style-stat-value {
-      font-size: 12px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.85);
-      line-height: 1.3;
-    }
-    .style-cushion-row {
-      display: flex;
-      gap: 3px;
-      margin-top: 3px;
-    }
-    .s-pip {
-      height: 5px;
-      flex: 1;
-      border-radius: 3px;
-      background: rgba(255,255,255,0.08);
-    }
-    .s-pip.on { background: var(--accent); }
     .style-cta-row { margin-top: auto; padding-top: 10px; }
     .style-cta {
       display: block;
@@ -431,7 +364,6 @@
     @media (max-width: 400px) {
       .brand-grid { grid-template-columns: 1fr; }
     }
-
   </style>
 </head>
 <body>
@@ -445,7 +377,8 @@
   <section class="hero">
     <div class="hero-eyebrow">Free socks With Every regular priced shoe, bra, and clothing purchase.</div>
     <h1>Choose Your<br/><span>Free Socks</span></h1>
-   
+  </section>
+
   <!-- Brand Grid -->
   <section class="grid-section">
     <div class="brand-grid" id="brandGrid"></div>
@@ -465,39 +398,36 @@
   </div>
 
   <footer>
-    &'copy; 2026 Fleet Feet Vermont &nbsp;·&nbsp; Offer valid on regular price items only &nbsp;·&nbsp; While supplies last
+    &copy; 2026 Fleet Feet Vermont &nbsp;·&nbsp; Offer valid on regular price items only &nbsp;·&nbsp; While supplies last
   </footer>
 
 <script>
-  // ─────────────────────────────────────────────────────────────────
-  // DATA — swap in your real images, names, prices & URLs
-  // ─────────────────────────────────────────────────────────────────
   const brands = [
     {
       brand: "Darn Tough",
       emoji: "🧦",
-      imgSrc: "image/darn-tough.jpg",           // brand card hero image URL
+      imgSrc: "image/darn-tough.jpg",
       tagline: "",
       desc: "Anatomically correct fit with targeted compression zones. Built for serious runners.",
       styles: [
-        { name: "No Show Tab Ultra-LightWeight",   emoji: "🧦", imgSrc: "image/darntough-socks/ultra-light-no-show.webp", price: "$22.99", cushion: 5, material: "87% Nylon, 13% Elastane",         bestFor: "Long runs & trail",    url: "#" },
-        { name: "1/4 sock Ultra-Lightweight with Cushion",    emoji: "🧦", imgSrc: "image/darntough-socks/no-show-tab-ultra-with-cushion.webp", price: "$18.99", cushion: 3, material: "87% Nylon, 13% Elastane",         bestFor: "Everyday training",    url: "#" },
-        { name: "Crew Lightweight",    emoji: "🧦", imgSrc: "image/darntough-socks/micro-crew-light-ultra.webp", price: "$18.99", cushion: 3, material: "87% Nylon, 13% Elastane",         bestFor: "Everyday training",    url: "#" },
-        { name: "Crew Lightweight with Cushion",    emoji: "🧦", imgSrc: "image/darntough-socks/bolt-micro-crew-ultra-lightweight-cushion.webp", price: "$18.99", cushion: 3, material: "87% Nylon, 13% Elastane",         bestFor: "Everyday training",    url: "#" },
-        { name: "Boot Sock Midweight with Cushion",    emoji: "🧦", imgSrc: "image/darntough-socks/", price: "$18.99", cushion: 3, material: "87% Nylon, 13% Elastane",         bestFor: "Everyday training",    url: "#" },
-        { name: "Micro Crew Midweight with Cushion",    emoji: "🧦", imgSrc: "image/darntough-socks/", price: "$18.99", cushion: 3, material: "87% Nylon, 13% Elastane",         bestFor: "Everyday training",    url: "#" },
-    ]
+        { name: "No Show Tab",        emoji: "🧦", imgSrc: "image/darntough-socks/ultra-light-no-show.webp",                    url: "#" },
+        { name: "1/4 Sock",           emoji: "🧦", imgSrc: "image/darntough-socks/no-show-tab-ultra-with-cushion.webp",         url: "#" },
+        { name: "Crew",               emoji: "🧦", imgSrc: "image/darntough-socks/micro-crew-light-ultra.webp",                 url: "#" },
+        { name: "Lifestyle",          emoji: "🧦", imgSrc: "image/darntough-socks/bolt-micro-crew-ultra-lightweight-cushion.webp", url: "#" },
+        { name: "Boot Sock",          emoji: "🧦", imgSrc: "",                                                                   url: "#" },
+        { name: "Micro Crew Hike",    emoji: "🧦", imgSrc: "",                                                                   url: "#" },
+      ]
     },
     {
-      brand: " Wide OPEN",
+      brand: "Wide Open",
       emoji: "🧦",
       imgSrc: "",
       tagline: "",
       desc: "South African-made with mohair fiber for unbeatable blister protection and all-day comfort.",
       styles: [
-        { name: "",   emoji: "🧦", imgSrc: "", price: "$17.99", cushion: 3, material: "60% Mohair, 35% Nylon, 5% Elastane",  bestFor: "Road running",          url: "#" },
-        { name: "",  emoji: "🧦", imgSrc: "", price: "$15.99", cushion: 4, material: "60% Mohair, 35% Nylon, 5% Elastane",  bestFor: "Daily wear & walking",  url: "#" },
-        { name: "",  emoji: "🧦", imgSrc: "", price: "$16.99", cushion: 3, material: "60% Mohair, 35% Nylon, 5% Elastane",  bestFor: "Long distance & hiking",url: "#" }
+        { name: "", emoji: "🧦", imgSrc: "", url: "#" },
+        { name: "", emoji: "🧦", imgSrc: "", url: "#" },
+        { name: "", emoji: "🧦", imgSrc: "", url: "#" }
       ]
     },
     {
@@ -507,42 +437,27 @@
       tagline: "",
       desc: "Made right here in Vermont with Merino wool. Guaranteed for life — seriously.",
       styles: [
-        { name: "Hidden Comfort", emoji: "🧦", imgSrc: "image/balega/hidden-comfort.webp", price: "$19.99", cushion: 1, material: "65% Merino Wool, 33% Nylon, 2% Lycra", bestFor: "Racing & speed",   url: "#" },
-        { name: "Enduro 1/4",      emoji: "🧦", imgSrc: "image/balega/enduro-1-4.webp", price: "$21.99", cushion: 2, material: "65% Merino Wool, 33% Nylon, 2% Lycra", bestFor: "Road running",     url: "#" },
-        { name: "Enduro Crew",       emoji: "🧦", imgSrc: "image/balega/enduro-crew.webp", price: "$23.99", cushion: 4, material: "60% Merino Wool, 38% Nylon, 2% Lycra", bestFor: "Hiking & outdoor", url: "#" },
-        { name: "Sliver Crew",       emoji: "🧦", imgSrc: "image/balega/silver-crew.webp", price: "$23.99", cushion: 4, material: "60% Merino Wool, 38% Nylon, 2% Lycra", bestFor: "Hiking & outdoor", url: "#" },      
-    ]
+        { name: "Hidden Comfort", emoji: "🧦", imgSrc: "image/balega/hidden-comfort.webp", url: "#" },
+        { name: "Enduro 1/4",     emoji: "🧦", imgSrc: "image/balega/enduro-1-4.webp",     url: "#" },
+        { name: "Enduro Crew",    emoji: "🧦", imgSrc: "image/balega/enduro-crew.webp",    url: "#" },
+        { name: "Silver Crew",    emoji: "🧦", imgSrc: "image/balega/silver-crew.webp",    url: "#" },
+      ]
     },
     {
-      brand: "Jocology",
+      brand: "Jogology",
       emoji: "🧦",
       imgSrc: "image/jogology-logo.webp",
       tagline: "",
       desc: "Clinically tested padding that reduces pressure, impact, and friction on your feet.",
       styles: [
-        { name: "Jogology Low Cushion No Show",       emoji: "🧦", imgSrc: "image/jogology/jogology-low.webp", price: "$14.99", cushion: 4, material: "70% THORLON, 28% Nylon, 2% Elastic", bestFor: "Walking & everyday",  url: "#" },
-        { name: "Jogology Medium Cushion No Show",   emoji: "🧦", imgSrc: "image/jogology/jogolofy-medium.webp", price: "$16.99", cushion: 3, material: "70% THORLON, 28% Nylon, 2% Elastic", bestFor: "Road running",        url: "#" },
-        { name: "Jogology High Cushion No Show",       emoji: "🧦", imgSrc: "image/jogology/jogology-high-cushion-no-show.webp", price: "$14.99", cushion: 4, material: "70% THORLON, 28% Nylon, 2% Elastic", bestFor: "Walking & everyday",  url: "#" },
-        { name: "Jogology Medium Cushion Quarter",   emoji: "🧦", imgSrc: "image/jogology/medium-cushion-quarter.webp", price: "$16.99", cushion: 3, material: "70% THORLON, 28% Nylon, 2% Elastic", bestFor: "Road running",        url: "#" },
-        
+        { name: "Low Cushion No Show",    emoji: "🧦", imgSrc: "image/jogology/jogology-low.webp",                  url: "#" },
+        { name: "Medium Cushion No Show", emoji: "🧦", imgSrc: "image/jogology/jogology-medium.webp",               url: "#" },
+        { name: "High Cushion No Show",   emoji: "🧦", imgSrc: "image/jogology/jogology-high-cushion-no-show.webp", url: "#" },
+        { name: "Medium Cushion Quarter", emoji: "🧦", imgSrc: "image/jogology/medium-cushion-quarter.webp",        url: "#" },
       ]
     }
   ];
 
-  // ─────────────────────────────────────────────────────────────────
-  // Helpers
-  // ─────────────────────────────────────────────────────────────────
-  const cushionLabels = ['', 'Ultralight', 'Light', 'Medium', 'Max', 'Plush Max'];
-
-  function miniPips(level) {
-    let html = '<div class="style-cushion-row">';
-    for (let i = 1; i <= 5; i++) html += `<div class="s-pip${i <= level ? ' on' : ''}"></div>`;
-    return html + '</div>';
-  }
-
-  // ─────────────────────────────────────────────────────────────────
-  // Render brand cards
-  // ─────────────────────────────────────────────────────────────────
   const brandGrid = document.getElementById('brandGrid');
 
   brands.forEach((b, i) => {
@@ -554,10 +469,7 @@
     div.role = 'button';
     div.setAttribute('aria-label', `Browse ${b.brand} styles`);
     div.innerHTML = `
-      <div class="brand-img">
-        ${imgEl}
-      
-      </div>
+      <div class="brand-img">${imgEl}</div>
       <div class="brand-info">
         <div>
           <div class="brand-name-small">${b.brand}</div>
@@ -568,9 +480,6 @@
     brandGrid.appendChild(div);
   });
 
-  // ─────────────────────────────────────────────────────────────────
-  // Modal logic
-  // ─────────────────────────────────────────────────────────────────
   const overlay  = document.getElementById('modalOverlay');
   const closeBtn = document.getElementById('modalClose');
 
@@ -586,29 +495,12 @@
     b.styles.forEach(s => {
       const imgEl = s.imgSrc ? `<img src="${s.imgSrc}" alt="${s.name}" />` : s.emoji;
       const a = document.createElement('a');
-      a.href = s.url;
+      a.href = s.url || '#';
       a.className = 'style-card';
       a.innerHTML = `
         <div class="style-card-img">${imgEl}</div>
         <div class="style-card-body">
           <div class="style-card-name">${s.name}</div>
-          <div class="style-card-price">${s.price}</div>
-          <div class="style-divider"></div>
-          <div class="style-stats">
-            <div class="style-stat">
-              <div class="style-stat-label">Cushion</div>
-              <div class="style-stat-value">${cushionLabels[s.cushion]}</div>
-              ${miniPips(s.cushion)}
-            </div>
-            <div class="style-stat">
-              <div class="style-stat-label">Best For</div>
-              <div class="style-stat-value">${s.bestFor}</div>
-            </div>
-            <div class="style-stat">
-              <div class="style-stat-label">Material</div>
-              <div class="style-stat-value">${s.material}</div>
-            </div>
-          </div>
           <div class="style-cta-row">
             <span class="style-cta">View Style →</span>
           </div>
