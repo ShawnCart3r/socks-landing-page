@@ -408,7 +408,7 @@
       emoji: "🧦",
       imgSrc: "image/darn-tough.jpg",
       tagline: "",
-      desc: "Anatomically correct fit with targeted compression zones. Built for serious runners.",
+      desc: "",
       styles: [
         { name: "No Show Tab",        emoji: "🧦", imgSrc: "image/darntough-socks/ultra-light-no-show.webp",                    url: "#" },
         { name: "1/4 Sock",           emoji: "🧦", imgSrc: "image/darntough-socks/no-show-tab-ultra-with-cushion.webp",         url: "#" },
@@ -423,7 +423,7 @@
       emoji: "🧦",
       imgSrc: "image/Wide_Open_Logo.jpg",
       tagline: "",
-      desc: "South African-made with mohair fiber for unbeatable blister protection and all-day comfort.",
+      desc: "",
       styles: [
       { name: "Cushioned Crew",     imgSrc: "image/openwide/Cushioned%20Crew.jpg" },
 { name: "Wildwood Cushioned", imgSrc: "image/openwide/Wildwood%20Cushioned.jpg" }
@@ -434,11 +434,10 @@
       emoji: "🧦",
       imgSrc: "image/1-balega-logo-1.jpg",
       tagline: "",
-      desc: "Made right here in Vermont with Merino wool. Guaranteed for life — seriously.",
+      desc: "",
       styles: [
         { name: "Hidden Comfort", emoji: "🧦", imgSrc: "image/balega/hidden-comfort.webp", url: "#" },
         { name: "Enduro 1/4",     emoji: "🧦", imgSrc: "image/balega/endro-1:4.webp",     url: "#" },
-        { name: "Enduro Crew",    emoji: "🧦", imgSrc: "image/balega/enduro-crew.webp",    url: "#" },
         { name: "Silver Crew",    emoji: "🧦", imgSrc: "image/balega/silver-crew.webp",    url: "#" },
       ]
     },
@@ -447,7 +446,7 @@
       emoji: "🧦",
       imgSrc: "image/jogology-logo.webp",
       tagline: "",
-      desc: "Clinically tested padding that reduces pressure, impact, and friction on your feet.",
+      desc: "",
       styles: [
         { name: "Low Cushion No Show",    emoji: "🧦", imgSrc: "image/jogology/jogology-low.webp",                  url: "#" },
         { name: "Medium Cushion No Show", emoji: "🧦", imgSrc: "image/jogology/jogology-medium.webp",               url: "#" },
@@ -484,7 +483,7 @@
   function openModal(idx) {
     const b = brands[idx];
     document.getElementById('modalLabel').textContent = b.brand;
-    document.getElementById('modalTitle').textContent = b.tagline + ' Collection';
+    document.getElementById('modalTitle').textContent = b.tagline + ' ';
     document.getElementById('modalDesc').textContent  = b.desc;
 
     const stylesGrid = document.getElementById('stylesGrid');
