@@ -106,7 +106,6 @@
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 16px;
-      overflow: hidden;
       cursor: pointer;
       transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
@@ -128,7 +127,6 @@
       font-size: 90px;
       background: #ffffff;
       position: relative;
-      overflow: hidden;
     }
     .brand-img img {
       width: 100%;
@@ -146,16 +144,14 @@
       justify-content: space-between;
     }
     .brand-name-small {
-      font-size: 24px;
+      font-size: clamp(14px, 3vw, 22px);
       font-weight: 700;
       letter-spacing: 2px;
-      white-space: nowrap;
       text-align: center;
-      overflow: hidden;
-      text-overflow: ellipsis;
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 4px;
+      word-break: break-word;
     }
     .brand-tagline {
       font-family: 'Barlow Condensed', sans-serif;
@@ -282,7 +278,6 @@
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(74,158,255,0.12);
       border-radius: 14px;
-      overflow: hidden;
       transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
       cursor: pointer;
       text-decoration: none;
@@ -302,7 +297,6 @@
       justify-content: center;
       font-size: 52px;
       background: #ffffff;
-      overflow: hidden;
     }
     .style-card-img img {
       width: 100%;
@@ -414,14 +408,14 @@
       emoji: "🧦",
       imgSrc: "image/darn-tough.jpg",
       tagline: "",
-      desc: "",
+      desc: "Anatomically correct fit with targeted compression zones. Built for serious runners.",
       styles: [
         { name: "No Show Tab",        emoji: "🧦", imgSrc: "image/darntough-socks/ultra-light-no-show.webp",                    url: "#" },
         { name: "1/4 Sock",           emoji: "🧦", imgSrc: "image/darntough-socks/no-show-tab-ultra-with-cushion.webp",         url: "#" },
         { name: "Crew",               emoji: "🧦", imgSrc: "image/darntough-socks/micro-crew-light-ultra.webp",                 url: "#" },
         { name: "Lifestyle",          emoji: "🧦", imgSrc: "image/darntough-socks/bolt-micro-crew-ultra-lightweight-cushion.webp", url: "#" },
-        { name: "Boot Sock",          emoji: "🧦", imgSrc: "image/darntough-socks/boot-sock.webp",                                                                   url: "#" },
-        { name: "Micro Crew Hike",    emoji: "🧦", imgSrc: "image/darntough-socks/micro-crew.webp",                                                                   url: "#" },
+        { name: "Boot Sock",          emoji: "🧦", imgSrc: "",                                                                   url: "#" },
+        { name: "Micro Crew Hike",    emoji: "🧦", imgSrc: "",                                                                   url: "#" },
       ]
     },
     {
@@ -429,11 +423,11 @@
       emoji: "🧦",
       imgSrc: "image/Wide_Open_Logo.jpg",
       tagline: "",
-      desc: "",
+      desc: "South African-made with mohair fiber for unbeatable blister protection and all-day comfort.",
       styles: [
-        { name: "Cushioned Crew", emoji: "🧦", imgSrc: "image/openwide/Cushioned Crew.jpg", url: "#" },
-       
-        { name: "Wildwood Cushioned", emoji: "🧦", imgSrc: "image/openwide/Wildwood Cushioned.jpg", url: "#" }
+        { name: "", emoji: "🧦", imgSrc: "", url: "#" },
+        { name: "", emoji: "🧦", imgSrc: "", url: "#" },
+        { name: "", emoji: "🧦", imgSrc: "", url: "#" }
       ]
     },
     {
@@ -441,10 +435,10 @@
       emoji: "🧦",
       imgSrc: "image/1-balega-logo-1.jpg",
       tagline: "",
-      desc: "",
+      desc: "Made right here in Vermont with Merino wool. Guaranteed for life — seriously.",
       styles: [
         { name: "Hidden Comfort", emoji: "🧦", imgSrc: "image/balega/hidden-comfort.webp", url: "#" },
-        { name: "Enduro 1/4",     emoji: "🧦", imgSrc: "image/balega/end-1:4.webp",     url: "#" },
+        { name: "Enduro 1/4",     emoji: "🧦", imgSrc: "image/balega/endro-1:4.webp",     url: "#" },
         { name: "Enduro Crew",    emoji: "🧦", imgSrc: "image/balega/enduro-crew.webp",    url: "#" },
         { name: "Silver Crew",    emoji: "🧦", imgSrc: "image/balega/silver-crew.webp",    url: "#" },
       ]
@@ -454,7 +448,7 @@
       emoji: "🧦",
       imgSrc: "image/jogology-logo.webp",
       tagline: "",
-      desc: "",
+      desc: "Clinically tested padding that reduces pressure, impact, and friction on your feet.",
       styles: [
         { name: "Low Cushion No Show",    emoji: "🧦", imgSrc: "image/jogology/jogology-low.webp",                  url: "#" },
         { name: "Medium Cushion No Show", emoji: "🧦", imgSrc: "image/jogology/jogology-medium.webp",               url: "#" },
@@ -491,7 +485,7 @@
   function openModal(idx) {
     const b = brands[idx];
     document.getElementById('modalLabel').textContent = b.brand;
-    document.getElementById('modalTitle').textContent = b.tagline + ' ';
+    document.getElementById('modalTitle').textContent = b.tagline + ' Collection';
     document.getElementById('modalDesc').textContent  = b.desc;
 
     const stylesGrid = document.getElementById('stylesGrid');
